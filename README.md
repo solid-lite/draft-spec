@@ -46,7 +46,7 @@ All resources should be represented in a clear and structured JSON format. JSON 
 Example of a Resource JSON:
 
 ```json
-{
+  {
     "@context": "http://example.org/context/v1",
     "@id": "http://example.org/album#1",
     "name": "Example Album",
@@ -73,7 +73,6 @@ Example of a Resource JSON:
       "birthDate": "1990-01-01"
     }
   }
-}
 ```
 
 In this example:
