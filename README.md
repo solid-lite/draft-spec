@@ -45,7 +45,7 @@ All resources should be represented in a clear and structured JSON format. JSON 
 
 Example of a Resource JSON:
 
-json
+```json
 {
     "@context": "http://example.org/context/v1",
     "@id": "http://example.org/album#1",
@@ -74,6 +74,7 @@ json
     }
   }
 }
+```
 
 In this example:
 - @id provides a unique ID for the resource.
