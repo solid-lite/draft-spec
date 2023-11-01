@@ -10,21 +10,21 @@ Solid, from its inception, has held a vision of decentralization, giving individ
 
 ### **Our Goals**:
 
-1. **Broad Implementation**: We aim for wide adoption, across multiple platforms and domains.
+1. **Broad Ecosystem**: We aim for wide adoption, across multiple platforms and domains.
 2. **Test Suite Comparability**: Ensuring consistency across implementations.
 3. **Easy Server Implementation**: Straightforward and simple server creation and setup process.
-4. **Useful Apps**: Supporting a range of applications that users find valuable.
-5. **Bug-Free Servers**: Stability and reliability as core principles.
+4. **Versatile Apps**: Supporting a range of applications that users find valuable.
+5. **Robust Servers**: Stability and reliability as core principles.
 6. **True to Solid's Original Vision**: Upholding the principles of user control and decentralization.
 7. **Upgrade Path to the Big Solid Spec**: A clear and manageable migration process.
 8. **Allow Experimental Options**: A platform that supports innovation and experimentation.
-9. **Interest to More Casual Developers**: Making Solid-Lite approachable to all.
+9. **Appeal to More Casual Developers**: Making Solid-Lite approachable to all.
 10. **Diverse Participation**: Encouraging contributions from all backgrounds and experiences.
 11. **Shallow Learning Curve**: An easily understandable and learnable protocol.
 
 ## **Possible Use Cases**:
 
-1. **Personal Data Lockers**: Individuals can store their data securely, with granular control over who can access it.
+1. **Personal Data Vaults**: Individuals can store their data securely, with granular control over who can access it.
 2. **Collaborative Platforms**: Whether for businesses or personal projects, teams can work together without compromising data control.
 3. **Educational Portfolios**: Students and educators can manage academic records, projects, and feedback.
 4. **Health Data Management**: Patients can have control over their medical data, sharing it only with who they choose.
@@ -35,7 +35,7 @@ Solid, from its inception, has held a vision of decentralization, giving individ
 
 ## **In Conclusion**
 
-Solid-Lite is not just a protocol; it's a revolution. It represents the bridge between the foundational principles of Solid and the broader developer community, making the decentralized web more accessible than ever.
+Solid-Lite is not just a protocol; finally we provide the missing piece in the Solid world. Solid-Lite targets the average developer and provides the onboarding process into all the capabilities that Solid brings. Solid-Lite offers an appealing pathway to the future of the Web. It represents the bridge between the foundational principles of Solid and the broader developer community, making the decentralized web more accessible than ever.
 
 By simplifying, streamlining, and staying true to the ethos of user empowerment, Solid-Lite has the potential to become the backbone of the next generation of web applications. Through its implementation, we can look forward to a web that respects individual privacy, promotes collaboration, and fosters innovation.
 
