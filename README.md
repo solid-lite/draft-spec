@@ -6,8 +6,6 @@ Version 0.0.0 `pre-draft` `author:melvincarvalho`
 
 ### 1. Introduction
 
-Introduction
-
 The vision of a decentralized web, built on the principles of Social Linked Data, seeks to redefine how we perceive data ownership and collaboration. To universalize this concept, it's paramount to introduce a protocol that appeals to a wide spectrum of developers and innovators.
 
 Presenting Solid-Lite. Grounded in the tenets of Social Linked Data, this protocol offers a balance of elegance and potency. Conceived for expansive adaptability, Solid-Lite caters to a myriad of applications, from safeguarding personal records to powering intricate collaborative platforms. Its design aims to make the complexities of decentralized data accessible, providing tools that empower developers to craft solutions which prioritize user autonomy and innovation.
@@ -52,10 +50,10 @@ In Solid environments, where robust access control mechanisms are innate, browse
 To address this, the Cross-Origin Resource Sharing (CORS) [FETCH] mechanism comes into play. CORS permits servers to indicate accessible resources via specific HTTP headers. For Solid, the goal is to facilitate unrestricted CORS interactions, allowing the underlying Authorization layer to manage access control. The ensuing section provides directives for the requisite HTTP header configuration.
 
 ### 7. Identity
-- WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See Primer for examples.
+- WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See Primer for examples.  
 
-### 8. Authentication (WIP)
-- WebID-XX: Method to authenticate using TLS with a WebID.
+### 8. Authentication 
+- Authentication is the process of verifying a WebID.  This can either be done using PKI, or with a bearer token.  The WebID is returned to the server on successful authentication.
 
 ### 9. Authorization
 - Auth Lite: The default authorization policy is that everyone can read, only the owner can write.  If access is not granted HTTP 401 (I dont know who you are) or HTTP 403 (I know who you are but you do not have access) should be returned.
