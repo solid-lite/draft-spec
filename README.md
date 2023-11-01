@@ -44,13 +44,13 @@ Servers MUST support the HTTP PUT and DELETE methods [RFC7231]
 
 ### 6. Cross-Origin Resource Sharing (CORS)
 
-Solid applications seamlessly integrate data from disparate sources. However, web browsers, by default, adhere to the Same-Origin Policy, restricting requests to different domains for security reasons. This precaution, vital for preventing malicious data retrieval, can inadvertently restrict legitimate Solid applications.
+Solid applications seamlessly integrate data from disparate sources. However, web browsers, by default, adhere to the Same-Origin Policy, restricting requests to different domains for security reasons. This precaution, vital for preventing malicious data retrieval, can inadvertently restrict legitimate Solid applications.  The following headers on the server will allow cross origins requests.
 
-Consider an application at `https://app.example/` aiming to fetch data from `https://sourceA.example/` and `https://sourceB.example/`. If Source A and Source B have granted the necessary permissions, the browser's inherent protections still inhibit this integration.
-
-In Solid environments, where robust access control mechanisms are innate, browser-imposed restrictions may be redundant. The objective is to empower data owners to specify their resource access permissions.
-
-To address this, the Cross-Origin Resource Sharing (CORS) [FETCH] mechanism comes into play. CORS permits servers to indicate accessible resources via specific HTTP headers. For Solid, the goal is to facilitate unrestricted CORS interactions, allowing the underlying Authorization layer to manage access control. The ensuing section provides directives for the requisite HTTP header configuration.
+```
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,HEAD,OPTIONS,PUT,DELETE,POST
+Access-Control-Allow-Headers: Content-Type
+```
 
 ### 7. Identity
 - WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See Primer for examples.  
