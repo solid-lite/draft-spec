@@ -5,9 +5,12 @@ Version 0.0.0 `pre-draft` `author:melvincarvalho`
 ## Solid-Lite Protocol Overview
 
 ### 1. Introduction
-- Terminology: Define key terms related to Solid-Lite.
-- Namespaces: List of namespaces used in Solid-Lite.
-- Conformance: Specifications that must be adhered to
+
+Introduction
+
+The vision of a decentralized web, built on the principles of Social Linked Data, seeks to redefine how we perceive data ownership and collaboration. To universalize this concept, it's paramount to introduce a protocol that appeals to a wide spectrum of developers and innovators.
+
+Presenting Solid-Lite. Grounded in the tenets of Social Linked Data, this protocol offers a balance of elegance and potency. Conceived for expansive adaptability, Solid-Lite caters to a myriad of applications, from safeguarding personal records to powering intricate collaborative platforms. Its design aims to make the complexities of decentralized data accessible, providing tools that empower developers to craft solutions which prioritize user autonomy and innovation.
 
 ### 2. Hypertext Transfer Protocol (HTTP)
 
@@ -27,21 +30,18 @@ Clients MAY conform to HTTP/1.1 Conditional Requests [[RFC7232](https://solidpro
 
 Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and Internationalized Resource Identifier (IRI) specifications to ensure consistent identification and referencing of resources. The URI provides a simple and extensible means for identifying a resource, while the IRI extends the URI to allow the use of characters from the Universal Character Set (UCS) [[RFC3987](https://solidproject.org/TR/protocol#bib-rfc3987)]. This adherence promotes interoperability and a consistent experience across the Solid-Lite ecosystem.
 
-### 4. Resources
+### 4. Resources (WIP)
 - Resource Containment: How resources are contained within the Solid-Lite ecosystem.
 - Auxiliary Resources: Supporting resources that augment or describe primary resources.
 
-### 5. Reading and Writing Resources
+### 5. Reading and Writing Resources (WIP)
 - Resource Type Heuristics: Criteria for determining resource types.
 - Reading Resources: Methods and guidelines for reading data from resources.
 - Writing Resources: How to write or update data to a resource.
 - Deleting Resources: Guidelines for removing resources.
 - Resource Representations: How resources can be represented, especially in JSON format.
 
-### 7. Live Update
-- Live Updates are not currently required, and may be implemented using using a [SLIP](https://github.com/solid-lite/slips)
-
-### 8. Cross-Origin Resource Sharing (CORS)
+### 6. Cross-Origin Resource Sharing (CORS)
 
 Solid applications seamlessly integrate data from disparate sources. However, web browsers, by default, adhere to the Same-Origin Policy, restricting requests to different domains for security reasons. This precaution, vital for preventing malicious data retrieval, can inadvertently restrict legitimate Solid applications.
 
@@ -51,14 +51,17 @@ In Solid environments, where robust access control mechanisms are innate, browse
 
 To address this, the Cross-Origin Resource Sharing (CORS) [FETCH] mechanism comes into play. CORS permits servers to indicate accessible resources via specific HTTP headers. For Solid, the goal is to facilitate unrestricted CORS interactions, allowing the underlying Authorization layer to manage access control. The ensuing section provides directives for the requisite HTTP header configuration.
 
-### 9. Identity
+### 7. Identity
 - WebID: An identifier scheme using URIs, describing how to set up and use WebIDs.
 
-### 10. Authentication
+### 8. Authentication
 - WebID-XX: Method to authenticate using TLS with a WebID.
 
-### 11. Authorization
+### 9. Authorization
 - Auth Lite: Everyone can read, owner can write
+
+### 10. Live Update
+- Live Updates are not currently required, and may be implemented using using a [SLIP](https://github.com/solid-lite/slips)
 
 ## JSON Representation with Links
 
