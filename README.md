@@ -9,7 +9,15 @@
 - Conformance: Specifications that must be adhered to
 
 ### 2. Hypertext Transfer Protocol (HTTP)
-- HTTP Server: Details on the server's functionality and behavior.
+
+#### 2.1 HTTP Server
+
+Servers MUST conform to HTTP/1.1 Message Syntax and Routing [RFC7230] and HTTP/1.1 Semantics and Content [RFC7231].
+
+Servers MUST conform to HTTP/1.1 Conditional Requests [RFC7232]. Servers SHOULD conform to HTTP/1.1 Caching [RFC7234].
+
+#### 2.2 HTTP Client
+
 - HTTP Client: Expected behavior and operations from the client side.
 
 ### 3. Uniform Resource Identifier (URI)
