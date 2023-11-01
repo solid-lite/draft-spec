@@ -1,3 +1,5 @@
+![image](https://github.com/solid-lite/draft-spec/assets/65864/f1df82b2-9379-4a21-b303-94159860f01f)
+
 # Solid-Lite: a lighter social linked data
 
 ## **Motivation**
