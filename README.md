@@ -1,3 +1,6 @@
+![image](https://github.com/solid-lite/draft-spec/assets/65864/d9b22bad-de6c-4f8a-97ec-827b1caafa56)
+
+
 ## Solid-Lite Protocol Overview
 
 ### 1. Introduction
