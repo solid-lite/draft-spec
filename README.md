@@ -23,8 +23,8 @@ Clients MUST conform to HTTP/1.1 Message Syntax and Routing [[RFC7230](https://s
 Clients MAY conform to HTTP/1.1 Conditional Requests [[RFC7232](https://solidproject.org/TR/protocol#bib-rfc7232)]. Clients MAY conform to HTTP/1.1 Caching [[RFC7234](https://solidproject.org/TR/protocol#bib-rfc7234)]. 
 
 ### 3. Uniform Resource Identifier (URI)
-- URI Slash Semantics: Define how slashes (/) in URIs should be interpreted.
-- URI Persistence: Guidelines on how URIs should remain consistent over time.
+
+Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and Internationalized Resource Identifier (IRI) specifications to ensure consistent identification and referencing of resources. The URI provides a simple and extensible means for identifying a resource, while the IRI extends the URI to allow the use of characters from the Universal Character Set (UCS) [[RFC3987](https://solidproject.org/TR/protocol#bib-rfc3987)]. This adherence promotes interoperability and a consistent experience across the Solid-Lite ecosystem.
 
 ### 4. Resources
 - Resource Containment: How resources are contained within the Solid-Lite ecosystem.
