@@ -32,12 +32,15 @@ Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and 
 - Resource Containment: How resources are contained within the Solid-Lite ecosystem.
 - Auxiliary Resources: Supporting resources that augment or describe primary resources.
 
-### 5. Reading and Writing Resources (WIP)
-- Resource Type Heuristics: Criteria for determining resource types.
-- Reading Resources: Methods and guidelines for reading data from resources.
-- Writing Resources: How to write or update data to a resource.
-- Deleting Resources: Guidelines for removing resources.
-- Resource Representations: How resources can be represented, especially in JSON format.
+### 5. Reading and Writing Resources
+
+5.1 Reading
+
+Servers MUST support the HTTP GET, HEAD and OPTIONS methods [RFC7231] for clients to read resources or to determine communication options. 
+
+5.2 Writing
+
+Servers MUST support the HTTP PUT and DELETE methods [RFC7231]
 
 ### 6. Cross-Origin Resource Sharing (CORS)
 
@@ -61,7 +64,7 @@ To address this, the Cross-Origin Resource Sharing (CORS) [FETCH] mechanism come
 ### 10. Live Update
 - Live Updates are not currently required, and may be implemented using using a [SLIP](https://github.com/solid-lite/slips)
 
-## JSON Representation with Links
+## JSON Representation with Links (WIP)
 
 All resources should be represented in a clear and structured JSON format. JSON provides an easy-to-understand format that can be quickly parsed and read by both humans and machines.
 
