@@ -1,5 +1,6 @@
 ![image](https://github.com/solid-lite/draft-spec/assets/65864/d9b22bad-de6c-4f8a-97ec-827b1caafa56)
 
+Version 0.0.0 `pre-draft` `author:melvincarvalho`
 
 ## Solid-Lite Protocol Overview
 
@@ -38,7 +39,7 @@ Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and 
 - Resource Representations: How resources can be represented, especially in JSON format.
 
 ### 7. Live Update
-- TBD maybe optional
+- Live Updates are not currently required, and may be implemented using using a [SLIP](https://github.com/solid-lite/slips)
 
 ### 8. Cross-Origin Resource Sharing (CORS)
 - CORS Server: Specification for the server supporting cross-origin requests.
