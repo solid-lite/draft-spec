@@ -52,13 +52,13 @@ In Solid environments, where robust access control mechanisms are innate, browse
 To address this, the Cross-Origin Resource Sharing (CORS) [FETCH] mechanism comes into play. CORS permits servers to indicate accessible resources via specific HTTP headers. For Solid, the goal is to facilitate unrestricted CORS interactions, allowing the underlying Authorization layer to manage access control. The ensuing section provides directives for the requisite HTTP header configuration.
 
 ### 7. Identity
-- WebID: An identifier scheme using URIs, describing how to set up and use WebIDs.
+- WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See Primer for examples.
 
-### 8. Authentication
+### 8. Authentication (WIP)
 - WebID-XX: Method to authenticate using TLS with a WebID.
 
 ### 9. Authorization
-- Auth Lite: Everyone can read, owner can write
+- Auth Lite: The default authorization policy is that everyone can read, only the owner can write.  If access is not granted HTTP 401 (I dont know who you are) or HTTP 403 (I know who you are but you do not have access) should be returned.
 
 ### 10. Live Update
 - Live Updates are not currently required, and may be implemented using using a [SLIP](https://github.com/solid-lite/slips)
