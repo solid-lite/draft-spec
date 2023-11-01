@@ -42,7 +42,13 @@ Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and 
 - Live Updates are not currently required, and may be implemented using using a [SLIP](https://github.com/solid-lite/slips)
 
 ### 8. Cross-Origin Resource Sharing (CORS)
-- CORS Server: Specification for the server supporting cross-origin requests.
+
+Solid apps typically access data from multiple sources. However, Web browsers by default prevent apps that run on one origin from accessing data on other origins. This cross-origin protection is a security mechanism that ensures malicious websites cannot simply read your profile or banking details from other websites. However, this reasonable default poses a problem even for benevolent Solid apps, which might have good reasons to access data from different places. For instance, a Solid app at https://app.example/ would be prevented from accessing data on https://guinan.example/ or https://darmok.example/, even when Guinan and Darmok have given the user of the app their permission to see some of their data.
+
+For cases where the other origins have their own access protection mechanism — like within Solid — the browser’s built-in cross-origin protection is actually an obstacle rather than a feature. After all, storages already ensure through access control that certain documents can only be accessed by specific people or applications. Preventively blocking apps from different origins thus introduces an unnecessary barrier.
+
+Fortunately, Web servers can indicate to the browser that certain documents do not require cross-origin protection. This mechanism to selectively disable that protection is called Cross-Origin Resource Sharing or CORS [FETCH]. By responding to browser requests with a specific combination of HTTP headers, servers can indicate which actions are allowed for a given resource. For Solid, the goal is to allow all actions on the CORS level, such that the deeper Authorization layer can exert full control over the app’s allowed permissions. The next section describes how to achieve this through the right HTTP header configuration.
+
 
 ### 9. Identity
 - WebID: An identifier scheme using URIs, describing how to set up and use WebIDs.
