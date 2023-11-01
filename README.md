@@ -12,13 +12,15 @@
 
 #### 2.1 HTTP Server
 
-Servers MUST conform to HTTP/1.1 Message Syntax and Routing [RFC7230] and HTTP/1.1 Semantics and Content [RFC7231].
+Servers MUST conform to HTTP/1.1 Message Syntax and Routing [[RFC7230](https://solidproject.org/TR/protocol#bib-rfc7230)] and HTTP/1.1 Semantics and Content [[RFC7231](https://solidproject.org/TR/protocol#bib-rfc7231)].
 
-Servers MUST conform to HTTP/1.1 Conditional Requests [RFC7232]. Servers SHOULD conform to HTTP/1.1 Caching [RFC7234].
+Servers MUST conform to HTTP/1.1 Conditional Requests [[RFC7232](https://solidproject.org/TR/protocol#bib-rfc7232)]. Servers SHOULD conform to HTTP/1.1 Caching [[RFC7234](https://solidproject.org/TR/protocol#bib-rfc7234)]. 
 
 #### 2.2 HTTP Client
 
-- HTTP Client: Expected behavior and operations from the client side.
+Clients MUST conform to HTTP/1.1 Message Syntax and Routing [[RFC7230](https://solidproject.org/TR/protocol#bib-rfc7230)] and HTTP/1.1 Semantics and Content [[RFC7231](https://solidproject.org/TR/protocol#bib-rfc7231)]. 
+
+Clients MAY conform to HTTP/1.1 Conditional Requests [[RFC7232](https://solidproject.org/TR/protocol#bib-rfc7232)]. Clients MAY conform to HTTP/1.1 Caching [[RFC7234](https://solidproject.org/TR/protocol#bib-rfc7234)]. 
 
 ### 3. Uniform Resource Identifier (URI)
 - URI Slash Semantics: Define how slashes (/) in URIs should be interpreted.
