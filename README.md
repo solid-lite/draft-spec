@@ -43,12 +43,13 @@ Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and 
 
 ### 8. Cross-Origin Resource Sharing (CORS)
 
-Solid apps typically access data from multiple sources. However, Web browsers by default prevent apps that run on one origin from accessing data on other origins. This cross-origin protection is a security mechanism that ensures malicious websites cannot simply read your profile or banking details from other websites. However, this reasonable default poses a problem even for benevolent Solid apps, which might have good reasons to access data from different places. For instance, a Solid app at https://app.example/ would be prevented from accessing data on https://guinan.example/ or https://darmok.example/, even when Guinan and Darmok have given the user of the app their permission to see some of their data.
+Solid applications seamlessly integrate data from disparate sources. However, web browsers, by default, adhere to the Same-Origin Policy, restricting requests to different domains for security reasons. This precaution, vital for preventing malicious data retrieval, can inadvertently restrict legitimate Solid applications.
 
-For cases where the other origins have their own access protection mechanism — like within Solid — the browser’s built-in cross-origin protection is actually an obstacle rather than a feature. After all, storages already ensure through access control that certain documents can only be accessed by specific people or applications. Preventively blocking apps from different origins thus introduces an unnecessary barrier.
+Consider an application at `https://app.example/` aiming to fetch data from `https://sourceA.example/` and `https://sourceB.example/`. If Source A and Source B have granted the necessary permissions, the browser's inherent protections still inhibit this integration.
 
-Fortunately, Web servers can indicate to the browser that certain documents do not require cross-origin protection. This mechanism to selectively disable that protection is called Cross-Origin Resource Sharing or CORS [FETCH]. By responding to browser requests with a specific combination of HTTP headers, servers can indicate which actions are allowed for a given resource. For Solid, the goal is to allow all actions on the CORS level, such that the deeper Authorization layer can exert full control over the app’s allowed permissions. The next section describes how to achieve this through the right HTTP header configuration.
+In Solid environments, where robust access control mechanisms are innate, browser-imposed restrictions may be redundant. The objective is to empower data owners to specify their resource access permissions.
 
+To address this, the Cross-Origin Resource Sharing (CORS) [FETCH] mechanism comes into play. CORS permits servers to indicate accessible resources via specific HTTP headers. For Solid, the goal is to facilitate unrestricted CORS interactions, allowing the underlying Authorization layer to manage access control. The ensuing section provides directives for the requisite HTTP header configuration.
 
 ### 9. Identity
 - WebID: An identifier scheme using URIs, describing how to set up and use WebIDs.
