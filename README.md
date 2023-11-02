@@ -55,7 +55,7 @@ Access-Control-Allow-Headers: Content-Type
 - WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See below for and example.  JSON-LD 1.1 is supported.
 
 ### 8. Authentication 
-- Authentication is the process of verifying a WebID.  This can either be done using PKI, or with a bearer token.  The WebID is returned to the server on successful authentication.  T
+- Authentication is the process of verifying a WebID.  This can either be done using PKI, or with a bearer token.  The WebID is returned to the server on successful authentication.  The authentication process will return a user URI to the server.  There will be multiple authentication strategies suppored similar to passportjs.  A simple PKI solution similar to that used in [SolidOS](https://github.com/SolidOS/solid-ui/blob/main/src/chat/keys.ts), where a signed header is sent to the server and verified, will be a base line example that implementers SHOULD support.  TODO: describe auth header and verification.
 
 ### 9. Authorization
 - Auth Lite: The default authorization policy is that everyone can read, only the owner can write.  If access is not granted HTTP 401 (I dont know who you are) or HTTP 403 (I know who you are but you do not have access) should be returned.
