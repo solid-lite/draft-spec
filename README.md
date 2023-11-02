@@ -14,23 +14,22 @@ Presenting Solid-Lite. Grounded in the tenets of Social Linked Data, this protoc
 
 #### 2.1 HTTP Server
 
-Servers MUST conform to HTTP/1.1 Message Syntax and Routing [[RFC7230](https://solidproject.org/TR/protocol#bib-rfc7230)] and HTTP/1.1 Semantics and Content [[RFC7231](https://solidproject.org/TR/protocol#bib-rfc7231)].
+- Servers MUST conform to HTTP/1.1 Message Syntax and Routing [[RFC7230](https://solidproject.org/TR/protocol#bib-rfc7230)] and HTTP/1.1 Semantics and Content [[RFC7231](https://solidproject.org/TR/protocol#bib-rfc7231)].
 
-Servers MUST conform to HTTP/1.1 Conditional Requests [[RFC7232](https://solidproject.org/TR/protocol#bib-rfc7232)]. Servers SHOULD conform to HTTP/1.1 Caching [[RFC7234](https://solidproject.org/TR/protocol#bib-rfc7234)]. 
+- Servers MUST conform to HTTP/1.1 Conditional Requests [[RFC7232](https://solidproject.org/TR/protocol#bib-rfc7232)]. Servers SHOULD conform to HTTP/1.1 Caching [[RFC7234](https://solidproject.org/TR/protocol#bib-rfc7234)]. 
 
 #### 2.2 HTTP Client
 
-Clients MUST conform to HTTP/1.1 Message Syntax and Routing [[RFC7230](https://solidproject.org/TR/protocol#bib-rfc7230)] and HTTP/1.1 Semantics and Content [[RFC7231](https://solidproject.org/TR/protocol#bib-rfc7231)]. 
+- Clients MUST conform to HTTP/1.1 Message Syntax and Routing [[RFC7230](https://solidproject.org/TR/protocol#bib-rfc7230)] and HTTP/1.1 Semantics and Content [[RFC7231](https://solidproject.org/TR/protocol#bib-rfc7231)]. 
 
-Clients MAY conform to HTTP/1.1 Conditional Requests [[RFC7232](https://solidproject.org/TR/protocol#bib-rfc7232)]. Clients MAY conform to HTTP/1.1 Caching [[RFC7234](https://solidproject.org/TR/protocol#bib-rfc7234)]. 
+- Clients MAY conform to HTTP/1.1 Conditional Requests [[RFC7232](https://solidproject.org/TR/protocol#bib-rfc7232)]. Clients MAY conform to HTTP/1.1 Caching [[RFC7234](https://solidproject.org/TR/protocol#bib-rfc7234)]. 
 
 ### 3. Uniform Resource Identifier (URI)
 
 Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and Internationalized Resource Identifier (IRI) specifications to ensure consistent identification and referencing of resources. The URI provides a simple and extensible means for identifying a resource, while the IRI extends the URI to allow the use of characters from the Universal Character Set (UCS) [[RFC3987](https://solidproject.org/TR/protocol#bib-rfc3987)]. This adherence promotes interoperability and a consistent experience across the Solid-Lite ecosystem.
 
-### 4. Resources (WIP)
-- Resource Containment: How resources are contained within the Solid-Lite ecosystem.
-- Auxiliary Resources: Supporting resources that augment or describe primary resources.
+### 4. Resources
+- Auxiliary Resources: Supporting resources that augment or describe primary resources are delivered through HTTP headers
 
 ### 5. Reading and Writing Resources
 
@@ -53,7 +52,7 @@ Access-Control-Allow-Headers: Content-Type
 ```
 
 ### 7. Identity
-- WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See Primer for examples.  
+- WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See below for and example.  JSON-LD 1.1 is supported.
 
 ### 8. Authentication 
 - Authentication is the process of verifying a WebID.  This can either be done using PKI, or with a bearer token.  The WebID is returned to the server on successful authentication.
@@ -64,38 +63,22 @@ Access-Control-Allow-Headers: Content-Type
 ### 10. Live Update
 - Live Updates are not currently required, and may be implemented using using a [SLIP](https://github.com/solid-lite/slips)
 
-## JSON Representation with Links (WIP)
+## JSON Representation with Links
 
-All resources should be represented in a clear and structured JSON format. JSON provides an easy-to-understand format that can be quickly parsed and read by both humans and machines.
+All resources should be represented in a clear and structured JSON format. JSON provides an easy-to-understand format that can be quickly parsed and read by both humans and machines.  This is based on JSON-LD 1.1.  A lite version compatible with ActivityPub may be developed in future, but for now a simple profile, located at the base of storage could be as described below.
 
 Example of a Resource JSON:
 
 ```json
   {
-    "@context": "http://example.org/context/v1",
-    "@id": "http://example.org/album#1",
-    "name": "Example Album",
-    "releaseDate": "2023-01-01",
-    "tracks":
-    [
-      {
-        "@id": "http://example.org/track#1",
-        "@type": "Track",
-        "name": "Track 1",
-        "duration": "3:45"
-      },
-      {
-        "@id": "http://example.org/track#2",
-        "@type": "Track",
-        "name": "Track 2",
-        "duration": "4:32"
-      }
-    ],
-    "artist": {
-      "@id": "http://example.org/artist#1",
-      "@type": "Artist",
-      "name": "Example Artist",
-      "birthDate": "1990-01-01"
+    "@context": "http://w3id.org/nostr",
+    "primaryTopic" {
+      "@id": "#me",
+      "@type": "Person",
+      "name": "Will Smith",
+      "img": "avatar.png",
+      "knows": "http://alice.example/#me,
+      "publickey": "1234abc"
     }
   }
 ```
