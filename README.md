@@ -52,7 +52,7 @@ Access-Control-Allow-Headers: Content-Type
 ```
 
 ### 7. Identity
-- WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See below for and example.  JSON-LD 1.1 is supported.
+- WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See below for and example.  JSON-LD 1.1 is supported.  The profile SHOULD live at the root level of the storage, giving a human friendly URL for sharing.
 
 ### 8. Authentication 
 - Authentication is the process of verifying a WebID.  This can either be done using PKI, or with a bearer token.  The WebID is returned to the server on successful authentication.  The authentication process will return a user URI to the server.  There will be multiple authentication strategies suppored similar to passportjs.  A simple PKI solution similar to that used in [SolidOS](https://github.com/SolidOS/solid-ui/blob/main/src/chat/keys.ts), where a signed header is sent to the server and verified, will be a base line example that implementers SHOULD support.  For now signing the current unix timestamp and sendign it in an `Auth: solid-lite` header is sufficient.  The server checks the timestamp is withing 60s of the current time.
