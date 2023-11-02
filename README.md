@@ -1,6 +1,6 @@
 ![image](https://github.com/solid-lite/draft-spec/assets/65864/d9b22bad-de6c-4f8a-97ec-827b1caafa56)
 
-Version 0.0.0 `pre-draft` `author:melvincarvalho`
+Version 0.0.1 `draft` `author:melvincarvalho`
 
 ## Solid-Lite Protocol Overview
 
@@ -55,13 +55,10 @@ Access-Control-Allow-Headers: Content-Type
 - WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See below for and example.  JSON-LD 1.1 is supported.
 
 ### 8. Authentication 
-- Authentication is the process of verifying a WebID.  This can either be done using PKI, or with a bearer token.  The WebID is returned to the server on successful authentication.
+- Authentication is the process of verifying a WebID.  This can either be done using PKI, or with a bearer token.  The WebID is returned to the server on successful authentication.  T
 
 ### 9. Authorization
 - Auth Lite: The default authorization policy is that everyone can read, only the owner can write.  If access is not granted HTTP 401 (I dont know who you are) or HTTP 403 (I know who you are but you do not have access) should be returned.
-
-### 10. Live Update
-- Live Updates are not currently required, and may be implemented using using a [SLIP](https://github.com/solid-lite/slips)
 
 ## JSON Representation with Links
 
