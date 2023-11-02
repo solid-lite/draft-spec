@@ -35,11 +35,11 @@ Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and 
 
 5.1 Reading
 
-Servers MUST support the HTTP GET, HEAD and OPTIONS methods [RFC7231] for clients to read resources or to determine communication options. 
+- Servers MUST support the HTTP GET, HEAD and OPTIONS methods [RFC7231] for clients to read resources or to determine communication options. 
 
 5.2 Writing
 
-Servers MUST support the HTTP PUT and DELETE methods [RFC7231]
+- Servers MUST support the HTTP PUT and DELETE methods [RFC7231]
 
 ### 6. Cross-Origin Resource Sharing (CORS)
 
@@ -77,7 +77,7 @@ Example of a Resource JSON:
       "@type": "Person",
       "name": "Will Smith",
       "img": "avatar.png",
-      "knows": "http://alice.example/#me,
+      "knows": "http://alice.example/#me",
       "publickey": "1234abc"
     }
   }
