@@ -72,7 +72,7 @@ Example of a Resource JSON:
 ```json
   {
     "@context": "http://w3id.org/webid",
-    "primaryTopic" {
+    "primaryTopic": {
       "@id": "#me",
       "@type": "Person",
       "name": "Will Smith",
