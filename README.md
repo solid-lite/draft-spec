@@ -71,7 +71,10 @@ Example of a Resource JSON:
 
 ```json
   {
-    "@context": "http://w3id.org/webid",
+    "@context": [
+      "http://w3id.org/webid"
+      "https://www.w3.org/ns/activitystreams"
+    ],
     "primaryTopic": {
       "@id": "#me",
       "@type": "Person",
