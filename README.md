@@ -78,6 +78,7 @@ Example of a Resource JSON:
       "@type": ["Person", "Actor"],
       "name": "Will Smith",
       "img": "avatar.png",
+      "storage": "/",
       "knows": "http://alice.example/#me",
       "followers": "followers",
       "following": "following",
