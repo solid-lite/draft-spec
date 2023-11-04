@@ -81,10 +81,10 @@ Example of a Resource JSON:
       "name": "Will Smith",
       "img": "avatar.png",
       "knows": "http://alice.example/#me",
-      "followers": "./followers",
-      "following": "./following",
-      "inbox": "./inbox",
-      "outbox": "./outbox",
+      "followers": "followers",
+      "following": "following",
+      "inbox": "inbox",
+      "outbox": "outbox",
       "publickey": "1234abc"
     }
   }
