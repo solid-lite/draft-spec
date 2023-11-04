@@ -77,10 +77,14 @@ Example of a Resource JSON:
     ],
     "primaryTopic": {
       "@id": "#me",
-      "@type": "Person",
+      "@type": ["Person", "Actor"],
       "name": "Will Smith",
       "img": "avatar.png",
       "knows": "http://alice.example/#me",
+      "followers": "./followers",
+      "following": "./following",
+      "inbox": "./inbox",
+      "outbox": "./outbox",
       "publickey": "1234abc"
     }
   }
