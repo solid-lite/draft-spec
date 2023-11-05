@@ -55,10 +55,19 @@ Access-Control-Allow-Headers: Content-Type
 - WebID: An WebID is a URI that denotes an Agent.  When dereferencing a WebID, it should return machine readable data, which can be used to discover other data, by following your nose (FYN).  See below for and example.  JSON-LD 1.1 is supported.  The profile SHOULD live at the root level of the storage, giving a human friendly URL for sharing.
 
 ### 8. Authentication 
+
 - Authentication is the process of verifying a WebID.  This can either be null auth, done using PKI, or with a bearer token.
 - The WebID is returned to the server on successful authentication.  The authentication process will return a user URI to the server.  There will be multiple authentication strategies suppored similar to passportjs.
+- Implementers much choose the following 3 modes of operation:  testing, single-user, multi-user, which operates as a layered authentication ladder.
+
+8.1 Null Auth (Testing)
 - The Null Auth approach is for testing only while building a server.  Everyone can read and write.  Null Auth MUST NOT be used in production.
-- A simple PKI solution similar to that used in [SolidOS](https://github.com/SolidOS/solid-ui/blob/main/src/chat/keys.ts), where a signed header is sent to the server and verified, will be a base line example that implementers SHOULD support.  For now signing the current unix timestamp and sendign it in an `Auth: solid-lite` header is sufficient.  The server checks the timestamp is withing 60s of the current time.
+
+8.2 Bearer Auth (Single-User Mode)
+- Bearer Auth is a shared SOLID_API_KEY that is sent in an `Authorization: Bearer ${SOLID_API_KEY}` header.  If not presesnt the server MUST return a 401.  Bearer Auth MUST be implemented in single user compliant solid lite servers, and given to the server on startup.
+
+8.3 PKI Auth  (Multi User Mode)
+- A simple PKI solution similar to that used in [SolidOS](https://github.com/SolidOS/solid-ui/blob/main/src/chat/keys.ts), where a signed header is sent to the server and verified, will be a base line example that implementers SHOULD support.  For now signing the current unix timestamp and sendign it in an `Auth: solid-lite` header is sufficient.  The server checks the timestamp is withing 60s of the current time.  PKI MUST be implmented in the more complex multi-user solid lite scenario.
 
 ### 9. Authorization
 - Auth Lite: The default authorization policy is that everyone can read, only the owner can write.  If access is not granted HTTP 401 (I dont know who you are) or HTTP 403 (I know who you are but you do not have access) should be returned.
