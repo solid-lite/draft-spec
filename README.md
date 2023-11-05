@@ -72,7 +72,7 @@ Access-Control-Allow-Headers: Content-Type
 ### 9. Authorization
 - Auth Lite: The default authorization policy is that everyone can read, only the owner can write.  If access is not granted HTTP 401 (I dont know who you are) or HTTP 403 (I know who you are but you do not have access) should be returned.
 
-## JSON Representation with Links
+## Appendix A: Example JSON Profile with Links
 
 All resources should be represented in a clear and structured JSON format. JSON provides an easy-to-understand format that can be quickly parsed and read by both humans and machines.  This is based on JSON-LD 1.1.  A lite version compatible with ActivityPub may be developed in future, but for now a simple profile, located at the base of storage could be as described below.
 
@@ -105,6 +105,18 @@ In this example:
 
 Using JSON with links allows for a clear structure while also providing a way to navigate between related resources in the Solid-Lite ecosystem.
 
+## Appendix B: **CRUD Operations Summary with HTTP Responses:**
+
+- **CREATE:** Adds a new resource. Client provides content; system responds with `201 Created` on success, confirming the creation.
+
+- **READ:** Retrieves resource(s) information. Client requests details; system responds with `200 OK` if resource(s) available, or `404 Not Found` if not.
+
+- **UPDATE:** Modifies an existing resource. Client submits changes; system responds with `200 OK` or `204 No Content` upon successful update, indicating the resource has been modified.
+
+- **DELETE:** Removes a resource. Client specifies target; system responds with `200 OK` or `204 No Content` if deletion is successful, or `404 Not Found` if the resource doesn't exist.
+
+
 ## Extending Solid Lite
 
 Solid Lite is extended via Solid Lite Implementations Propsosals ([SLIPs](https://solid-lite.github.io/slips/))
+
