@@ -93,7 +93,7 @@ Example of a Resource JSON:
       "following": "following",
       "inbox": "inbox",
       "outbox": "outbox",
-      "publickey": "1234abc"
+      "pubkey": "1234abc"
     }
   }
 ```
