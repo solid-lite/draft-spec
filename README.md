@@ -95,3 +95,7 @@ In this example:
 - other fields describe the data in JSON-LD
 
 Using JSON with links allows for a clear structure while also providing a way to navigate between related resources in the Solid-Lite ecosystem.
+
+## Extending Solid Lite
+
+Solid Lite is extended via Solid Lite Implementations Propsosals ([SLIPs](https://solid-lite.github.io/slips/))
