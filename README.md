@@ -87,23 +87,20 @@ Example of a Resource JSON:
 ```json
 {
   "@context": [
-    "https://www.w3.org/ns/activitystreams",
     "http://w3id.org/webid"
   ],
-  "@id": "",
-  "primaryTopic": {
-    "@id": "#me",
-    "@type": ["Person", "Actor"],
-    "name": "Will Smith",
-    "img": "avatar.png",
-    "storage": "/",
-    "knows": "http://alice.example/#me",
-    "followers": "followers",
-    "following": "following",
-    "inbox": "inbox",
-    "outbox": "outbox",
-    "pubkey": "1234abc"
-  }
+  "@id": "#me",
+  "@type": ["Person", "Actor"],
+  "name": "Jack Doe",
+  "img": "avatar.png",
+  "storage": "/",
+  "knows": "http://alice.example/#me",
+  "followers": "/followers",
+  "following": "/following",
+  "inbox": "/inbox",
+  "outbox": "/outbox",
+  "pubkey": "1234abc",
+  "isMainPageOf": ""
 }
 ```
 
