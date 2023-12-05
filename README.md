@@ -101,7 +101,7 @@ Example of a Resource JSON:
   "inbox": "/inbox",
   "outbox": "/outbox",
   "pubkey": "1234abc",
-  "isMainPageOf": ""
+  "mainEntityOfPage": ""
 }
 ```
 
