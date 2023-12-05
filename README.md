@@ -91,7 +91,7 @@ Example of a Resource JSON:
     "http://w3id.org/webid"
   ],
   "@id": "#me",
-  "@type": ["Person", "Actor"],
+  "@type": "Person",
   "name": "Jack Doe",
   "img": "avatar.png",
   "storage": "/",
