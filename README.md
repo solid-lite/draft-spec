@@ -87,6 +87,7 @@ Example of a Resource JSON:
 ```json
 {
   "@context": [
+    "https://www.w3.org/ns/activitystreams",
     "http://w3id.org/webid"
   ],
   "@id": "#me",
