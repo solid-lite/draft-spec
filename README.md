@@ -82,7 +82,7 @@ Access-Control-Allow-Headers: Content-Type
 
 All resources should be represented in a clear and structured JSON format. JSON provides an easy-to-understand format that can be quickly parsed and read by both humans and machines. This is based on JSON-LD 1.1. A lite version compatible with ActivityPub may be developed in future, but for now a simple profile, located at the base of storage could be as described below.
 
-Example of a Resource JSON, loosely combines the W3C WebID Community Group [Draft](https://w3c.github.io/WebID/working_documents/webid-core-jacopo.html), [Solid lite WebID definitions](https://solid-lite.github.io/WebID/ ), [Schema.org](https://developers.google.com/search/updates#february-2024) and [ActivityPub](https://www.w3.org/TR/activitypub/):
+Example of a Resource JSON, loosely combines the W3C WebID Community Group [Draft](https://w3c.github.io/WebID/working_documents/webid-core-jacopo.html), [Solid lite WebID definitions](https://solid-lite.github.io/WebID/spec/identity/), [Schema.org](https://developers.google.com/search/updates#february-2024) and [ActivityPub](https://www.w3.org/TR/activitypub/):
 
 ```json
 {
