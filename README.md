@@ -91,19 +91,23 @@ Example of a Resource JSON, loosely combines the W3C WebID Community Group [Draf
     "http://w3id.org/webid"
   ],
   "@id": "#me",
-  "@type": "Person",
-  "name": "Jack Doe",
+  "type": "Person",
+  "mainEntityOfPage": "",
+  "name": "Alyssa P. Hacker",
+  "preferredUsername": "alyssa",
+  "summary": "Lisp enthusiast hailing from MIT",
+  "inbox": "https://social.example/alyssa/inbox/",
+  "outbox": "https://social.example/alyssa/outbox/",
+  "followers": "https://social.example/alyssa/followers/",
+  "following": "https://social.example/alyssa/following/",
+  "liked": "https://social.example/alyssa/liked/",
   "img": "avatar.png",
-  "storage": "/",
   "knows": "http://alice.example/#me",
-  "followers": "/followers",
-  "following": "/following",
-  "inbox": "/inbox",
-  "outbox": "/outbox",
-  "pubkey": "1234abc",
-  "mainEntityOfPage": ""
+  "storage": "/",
+  "nostr": "nostr:pubkey:abcd0123456789"
 }
 ```
+
 
 In this example:
 
