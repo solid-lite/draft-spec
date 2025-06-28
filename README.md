@@ -1,4 +1,4 @@
-![image](https://github.com/solid-lite/draft-spec/assets/65864/d9b22bad-de6c-4f8a-97ec-827b1caafa56)
+<img src="./logo.png" width="400" alt="image"/>
 
 Version 0.0.1 `draft` `author:melvincarvalho`
 
@@ -37,8 +37,8 @@ Clients and servers SHOULD conform to the Uniform Resource Identifier (URI) and 
 5.1 Reading
 
 - Servers MUST support the HTTP GET, HEAD and OPTIONS methods [RFC7231] for clients to read resources or to determine communication options
-  
-5.2 Writing
+
+  5.2 Writing
 
 - Servers MUST support the HTTP PUT and DELETE methods [RFC7231]
 
@@ -107,7 +107,6 @@ Example of a Resource JSON, loosely combines the W3C WebID Community Group [Draf
   "nostr": "nostr:pubkey:abcd0123456789"
 }
 ```
-
 
 In this example:
 
