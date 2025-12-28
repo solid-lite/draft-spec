@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Getting Started - Solid Lite</title>
   <meta name="description" content="Build your first Solid Lite server in 10 minutes. Step-by-step tutorial.">
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
@@ -219,7 +221,7 @@
         <span class="step-number">1</span>
         <h3>Clone and install</h3>
       </div>
-<pre><code>git clone https://github.com/JavaScriptSolidServer/JavaScriptSolidServer.git
+<pre><code class="language-bash">git clone https://github.com/JavaScriptSolidServer/JavaScriptSolidServer.git
 cd JavaScriptSolidServer
 npm install</code></pre>
     </div>
@@ -229,7 +231,7 @@ npm install</code></pre>
         <span class="step-number">2</span>
         <h3>Start the server</h3>
       </div>
-<pre><code>node bin/jss.js</code></pre>
+<pre><code class="language-bash">node bin/jss.js</code></pre>
       <p>Server runs at <code>http://localhost:3000</code></p>
     </div>
 
@@ -238,7 +240,7 @@ npm install</code></pre>
         <span class="step-number">3</span>
         <h3>Test it</h3>
       </div>
-<pre><code># Create a resource
+<pre><code class="language-bash"># Create a resource
 curl -X PUT http://localhost:3000/hello.txt \
   -H "Content-Type: text/plain" \
   -d "Hello, Solid!"
@@ -249,7 +251,7 @@ curl http://localhost:3000/hello.txt</code></pre>
 
     <div class="tip">
       <strong>Tip:</strong> Enable more features with flags:
-<pre><code># Full-featured server
+<pre><code class="language-bash"># Full-featured server
 node bin/jss.js --idp --mashlib --conneg --notifications</code></pre>
     </div>
 
@@ -271,7 +273,7 @@ npm install fastify</code></pre>
         <span class="step-number">2</span>
         <h3>Minimal server (server.js)</h3>
       </div>
-<pre><code>import Fastify from 'fastify';
+<pre><code class="language-javascript">import Fastify from 'fastify';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -332,7 +334,7 @@ app.listen({ port: 3000 }, () => {
         <span class="step-number">3</span>
         <h3>Run it</h3>
       </div>
-<pre><code>node server.js</code></pre>
+<pre><code class="language-bash">node server.js</code></pre>
     </div>
 
     <p>Congratulations! You've implemented SLIPs 10, 11, and 12 — a minimal Solid Lite server.</p>
@@ -340,7 +342,7 @@ app.listen({ port: 3000 }, () => {
     <h2>Next Steps: Add Features</h2>
 
     <h3>Add Authentication (SLIP-81: Bearer Token)</h3>
-<pre><code>// Add to your server
+<pre><code class="language-javascript">// Add to your server
 const API_KEY = process.env.SOLID_API_KEY || 'secret';
 
 app.addHook('preHandler', (req, reply, done) => {
@@ -354,7 +356,7 @@ app.addHook('preHandler', (req, reply, done) => {
 });</code></pre>
 
     <h3>Add JSON-LD Profile (SLIP-20: WebID)</h3>
-<pre><code># Create a profile
+<pre><code class="language-bash"># Create a profile
 curl -X PUT http://localhost:3000/profile \
   -H "Content-Type: application/ld+json" \
   -H "Authorization: Bearer secret" \
@@ -366,7 +368,7 @@ curl -X PUT http://localhost:3000/profile \
   }'</code></pre>
 
     <h3>Add Containers (SLIP-40)</h3>
-<pre><code>// List directory contents as JSON-LD
+<pre><code class="language-javascript">// List directory contents as JSON-LD
 app.get('/*/', async (req, reply) => {
   const dirPath = path.join(DATA_DIR, req.url);
   const files = await fs.readdir(dirPath);
@@ -414,7 +416,7 @@ app.get('/*/', async (req, reply) => {
 
     <h2>Testing with curl</h2>
 
-<pre><code># Create
+<pre><code class="language-bash"># Create
 curl -X PUT http://localhost:3000/notes/first.json \
   -H "Content-Type: application/ld+json" \
   -d '{"@context": "https://schema.org", "@type": "Note", "text": "Hello!"}'
@@ -476,6 +478,27 @@ curl http://localhost:3000/notes/</code></pre>
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
 
+    <h2>Download Examples</h2>
+    <p>Ready-to-run example code:</p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+      <a href="./examples/minimal-server.js" download class="step" style="text-decoration: none; text-align: center;">
+        <strong style="color: var(--accent);">minimal-server.js</strong>
+        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted);">~50 lines, SLIPs 10-12</p>
+      </a>
+      <a href="./examples/personal-server.js" download class="step" style="text-decoration: none; text-align: center;">
+        <strong style="color: var(--success);">personal-server.js</strong>
+        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted);">+Auth, +Containers</p>
+      </a>
+      <a href="./examples/client.html" download class="step" style="text-decoration: none; text-align: center;">
+        <strong style="color: var(--warning);">client.html</strong>
+        <p style="margin: 0.5rem 0 0; font-size: 0.9rem; color: var(--text-muted);">Browser notes app</p>
+      </a>
+    </div>
+    <p style="margin-top: 1rem;">Or clone all examples:</p>
+<pre><code class="language-bash">git clone https://github.com/solid-lite/draft-spec.git
+cd draft-spec/examples
+npm install && npm start</code></pre>
+
     <h2>Resources</h2>
     <ul>
       <li><a href="https://solid-lite.github.io/slips/">All SLIPs</a> — Complete specification list</li>
@@ -492,5 +515,11 @@ curl http://localhost:3000/notes/</code></pre>
       <a href="https://github.com/solid-lite">GitHub</a>
     </p>
   </footer>
+
+  <!-- Syntax highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
 </body>
 </html>

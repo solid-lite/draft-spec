@@ -1,0 +1,14 @@
+{
+  "name": "solid-lite-examples",
+  "version": "1.0.0",
+  "description": "Solid Lite example servers",
+  "type": "module",
+  "scripts": {
+    "minimal": "node minimal-server.js",
+    "personal": "node personal-server.js",
+    "start": "node minimal-server.js"
+  },
+  "dependencies": {
+    "fastify": "^4.24.0"
+  }
+}

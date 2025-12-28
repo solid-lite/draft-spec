@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solid Lite Client</title>
+  <style>
+    * { box-sizing: border-box; font-family: system-ui, sans-serif; }
+    body { max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { color: #0969da; }
+    .card { background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 8px; padding: 1rem; margin: 1rem 0; }
+    .card h3 { margin: 0 0 0.5rem; }
+    .card p { margin: 0; color: #656d76; }
+    input, button { padding: 0.5rem 1rem; font-size: 1rem; border-radius: 6px; }
+    input { border: 1px solid #d0d7de; flex: 1; }
+    button { background: #0969da; color: white; border: none; cursor: pointer; }
+    button:hover { background: #0860ca; }
+    .actions { display: flex; gap: 0.5rem; margin: 1rem 0; }
+    .note { background: white; }
+    .empty { color: #656d76; font-style: italic; }
+    .status { font-size: 0.9rem; color: #656d76; margin-top: 1rem; }
+    .error { color: #cf222e; }
+    .success { color: #1a7f37; }
+  </style>
+</head>
+<body>
+  <h1>📝 Solid Lite Notes</h1>
+
+  <div class="card">
+    <label>Server URL:</label>
+    <div class="actions">
+      <input type="text" id="server" value="http://localhost:3000" placeholder="http://localhost:3000">
+      <button onclick="loadNotes()">Connect</button>
+    </div>
+    <div class="actions">
+      <input type="password" id="apiKey" placeholder="API Key (for writes)">
+    </div>
+  </div>
+
+  <div class="actions">
+    <input type="text" id="noteText" placeholder="Write a new note...">
+    <button onclick="addNote()">Add Note</button>
+  </div>
+
+  <div id="notes">
+    <p class="empty">Click "Connect" to load notes</p>
+  </div>
+
+  <p id="status" class="status"></p>
+
+  <script>
+    const $ = id => document.getElementById(id);
+
+    function status(msg, isError = false) {
+      $('status').textContent = msg;
+      $('status').className = 'status ' + (isError ? 'error' : 'success');
+    }
+
+    function getHeaders(forWrite = false) {
+      const headers = { 'Content-Type': 'application/ld+json' };
+      if (forWrite) {
+        const key = $('apiKey').value;
+        if (key) headers['Authorization'] = `Bearer ${key}`;
+      }
+      return headers;
+    }
+
+    async function loadNotes() {
+      const server = $('server').value;
+      try {
+        // Ensure notes container exists
+        await fetch(`${server}/notes/`, { method: 'PUT', headers: getHeaders(true) }).catch(() => {});
+
+        const res = await fetch(`${server}/notes/`);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        const data = await res.json();
+        const contains = data.contains || [];
+
+        if (contains.length === 0) {
+          $('notes').innerHTML = '<p class="empty">No notes yet. Add one above!</p>';
+        } else {
+          const notesHtml = await Promise.all(contains.map(async (item) => {
+            const id = item['@id'];
+            if (id.endsWith('/')) return ''; // Skip containers
+            try {
+              const noteRes = await fetch(`${server}/notes/${id}`);
+              const note = await noteRes.json();
+              return `
+                <div class="card note">
+                  <h3>${note.text || note.name || id}</h3>
+                  <p>${id}</p>
+                  <button onclick="deleteNote('${id}')" style="margin-top: 0.5rem; background: #cf222e;">Delete</button>
+                </div>
+              `;
+            } catch (e) {
+              return `<div class="card note"><h3>${id}</h3><p class="error">Failed to load</p></div>`;
+            }
+          }));
+          $('notes').innerHTML = notesHtml.join('');
+        }
+        status(`Connected to ${server}`);
+      } catch (e) {
+        status(`Failed to connect: ${e.message}`, true);
+      }
+    }
+
+    async function addNote() {
+      const server = $('server').value;
+      const text = $('noteText').value;
+      if (!text) return;
+
+      const id = Date.now();
+      const note = {
+        '@context': 'https://schema.org',
+        '@type': 'Note',
+        '@id': `${id}.jsonld`,
+        'text': text,
+        'dateCreated': new Date().toISOString()
+      };
+
+      try {
+        const res = await fetch(`${server}/notes/${id}.jsonld`, {
+          method: 'PUT',
+          headers: getHeaders(true),
+          body: JSON.stringify(note)
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        $('noteText').value = '';
+        status('Note added!');
+        loadNotes();
+      } catch (e) {
+        status(`Failed to add note: ${e.message}`, true);
+      }
+    }
+
+    async function deleteNote(id) {
+      const server = $('server').value;
+      try {
+        const res = await fetch(`${server}/notes/${id}`, {
+          method: 'DELETE',
+          headers: getHeaders(true)
+        });
+
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+        status('Note deleted!');
+        loadNotes();
+      } catch (e) {
+        status(`Failed to delete: ${e.message}`, true);
+      }
+    }
+  </script>
+</body>
+</html>
