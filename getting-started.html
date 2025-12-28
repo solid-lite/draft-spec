@@ -111,6 +111,29 @@
       padding: 0;
     }
 
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s, background 0.2s;
+    }
+
+    pre:hover .copy-btn {
+      opacity: 1;
+    }
+
+    .copy-btn:hover {
+      background: #0860ca;
+    }
+
     .step {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
@@ -521,5 +544,26 @@ npm install && npm start</code></pre>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-json.min.js"></script>
+
+  <!-- Copy buttons -->
+  <script>
+    document.querySelectorAll('pre').forEach(pre => {
+      const btn = document.createElement('button');
+      btn.className = 'copy-btn';
+      btn.textContent = 'Copy';
+      btn.onclick = async () => {
+        const code = pre.querySelector('code').textContent;
+        await navigator.clipboard.writeText(code);
+        btn.textContent = 'Copied!';
+        btn.style.background = '#1a7f37';
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.style.background = '';
+        }, 2000);
+      };
+      pre.style.position = 'relative';
+      pre.appendChild(btn);
+    });
+  </script>
 </body>
 </html>
