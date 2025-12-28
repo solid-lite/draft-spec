@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solid Lite - Decentralized Web Protocol</title>
+  <meta name="description" content="A minimal, composable protocol for the decentralized web. Implement a working server in 10 minutes.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f6f8fa;
+      --text: #1f2328;
+      --text-muted: #656d76;
+      --accent: #0969da;
+      --accent-subtle: #ddf4ff;
+      --border: #d0d7de;
+      --code-bg: #f6f8fa;
+      --success: #1a7f37;
+      --warning: #9a6700;
+      --purple: #8250df;
+      --pink: #bf3989;
+      --cyan: #0550ae;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0d1117;
+        --bg-secondary: #161b22;
+        --text: #e6edf3;
+        --text-muted: #8b949e;
+        --accent: #58a6ff;
+        --accent-subtle: #388bfd26;
+        --border: #30363d;
+        --code-bg: #1c2128;
+        --success: #3fb950;
+        --warning: #d29922;
+        --purple: #a371f7;
+        --pink: #f778ba;
+        --cyan: #79c0ff;
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    .header {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .logo { height: 40px; }
+
+    .nav { display: flex; gap: 1.5rem; }
+    .nav a { color: var(--text-muted); font-size: 0.95rem; }
+    .nav a:hover { color: var(--text); text-decoration: none; }
+
+    /* Hero */
+    .hero {
+      padding: 4rem 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .hero .tagline {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero .highlight {
+      display: inline-block;
+      background: var(--accent-subtle);
+      color: var(--accent);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .version {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .version code {
+      background: var(--code-bg);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      margin: 0 0.25rem;
+    }
+
+    /* Building Blocks */
+    .blocks {
+      padding: 3rem 2rem;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .blocks-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .blocks h2 {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .blocks .subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .block-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .block {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+    }
+
+    .block-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .block-id {
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    .block-id.core { background: var(--success); }
+    .block-id.auth { background: var(--warning); }
+
+    .block h3 { font-size: 1rem; font-weight: 500; }
+    .block p { font-size: 0.875rem; color: var(--text-muted); }
+
+    /* Main Content */
+    .main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .main h2 {
+      font-size: 1.5rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .main h2:first-child { margin-top: 0; }
+
+    .main h3 {
+      font-size: 1.1rem;
+      margin: 1.5rem 0 0.75rem;
+      color: var(--text);
+    }
+
+    .main h4 {
+      font-size: 1rem;
+      margin: 1.25rem 0 0.5rem;
+      color: var(--text-muted);
+    }
+
+    .main p { margin-bottom: 1rem; }
+
+    .main ul, .main ol {
+      margin: 0 0 1rem 1.5rem;
+    }
+
+    .main li { margin-bottom: 0.5rem; }
+
+    .main code {
+      background: var(--code-bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    .main pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0;
+    }
+
+    .main pre code {
+      background: none;
+      padding: 0;
+    }
+
+    /* Quick Start */
+    .quickstart {
+      background: var(--accent-subtle);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .quickstart h3 {
+      color: var(--accent);
+      margin: 0 0 1rem;
+    }
+
+    /* Tables */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+
+    th, td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: var(--bg-secondary);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer a { color: var(--text-muted); }
+    .footer a:hover { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header-inner { flex-direction: column; gap: 1rem; }
+      .hero h1 { font-size: 1.75rem; }
+      .block-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <img src="./logo.png" alt="Solid Lite" class="logo">
+      <nav class="nav">
+        <a href="#spec">Spec</a>
+        <a href="https://solid-lite.github.io/slips/">SLIPs</a>
+        <a href="https://github.com/JavaScriptSolidServer/JavaScriptSolidServer">JSS</a>
+        <a href="https://github.com/solid-lite">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Solid Lite</h1>
+    <p class="tagline">A minimal, composable protocol for the decentralized web</p>
+    <div class="highlight">Implement a working server in 10 minutes</div>
+    <p class="version">
+      Version <code>0.0.2</code> <code>draft</code>
+    </p>
+  </section>
+
+  <section class="blocks">
+    <div class="blocks-inner">
+      <h2>Composable Building Blocks</h2>
+      <p class="subtitle">Pick the SLIPs you need. Each is a small, focused feature. Mix and match.</p>
+
+      <h3 style="color: var(--success); margin: 2rem 0 1rem;">Core Foundation (10-minute server)</h3>
+      <div class="block-grid">
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id core">SLIP-10</span>
+            <h3>HTTP Methods</h3>
+          </div>
+          <p>GET, HEAD, OPTIONS, PUT, DELETE on resources.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id core">SLIP-11</span>
+            <h3>CORS Headers</h3>
+          </div>
+          <p>Cross-origin access for browser apps.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id core">SLIP-12</span>
+            <h3>JSON-LD</h3>
+          </div>
+          <p>Linked data format. application/ld+json.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id core">SLIP-13</span>
+            <h3>URI Resources</h3>
+          </div>
+          <p>Every resource has a stable URI.</p>
+        </div>
+      </div>
+
+      <h3 style="color: var(--warning); margin: 2rem 0 1rem;">Authentication</h3>
+      <div class="block-grid">
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id auth">SLIP-80</span>
+            <h3>Null Auth</h3>
+          </div>
+          <p>Testing only. No authentication.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id auth">SLIP-81</span>
+            <h3>Bearer Token</h3>
+          </div>
+          <p>API key for single-user servers.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id auth">SLIP-82</span>
+            <h3>Schnorr/NIP-98</h3>
+          </div>
+          <p>Nostr signatures. No passwords.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id auth">SLIP-83</span>
+            <h3>Solid-OIDC</h3>
+          </div>
+          <p>OpenID Connect with DPoP tokens.</p>
+        </div>
+      </div>
+
+      <h3 style="color: var(--accent); margin: 2rem 0 1rem;">Identity</h3>
+      <div class="block-grid">
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id">SLIP-20</span>
+            <h3>WebID Profile</h3>
+          </div>
+          <p>URI-based identity with RDF profile.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id">SLIP-21</span>
+            <h3>did:nostr</h3>
+          </div>
+          <p>Identity from Nostr pubkey. No registration.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id">SLIP-22</span>
+            <h3>Identity Linking</h3>
+          </div>
+          <p>Link WebID ↔ did:nostr via owl:sameAs.</p>
+        </div>
+      </div>
+
+      <h3 style="color: var(--purple); margin: 2rem 0 1rem;">Authorization</h3>
+      <div class="block-grid">
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--purple); color: white;">SLIP-90</span>
+            <h3>Owner Write</h3>
+          </div>
+          <p>Everyone reads, owner writes. Simple default.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--purple); color: white;">SLIP-91</span>
+            <h3>WAC</h3>
+          </div>
+          <p>Web Access Control. Fine-grained ACLs.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--purple); color: white;">SLIP-92</span>
+            <h3>ACP</h3>
+          </div>
+          <p>Access Control Policy. Policy-based.</p>
+        </div>
+      </div>
+
+      <h3 style="color: var(--pink); margin: 2rem 0 1rem;">Data & Formats</h3>
+      <div class="block-grid">
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--pink); color: white;">SLIP-30</span>
+            <h3>Turtle</h3>
+          </div>
+          <p>text/turtle RDF format support.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--pink); color: white;">SLIP-31</span>
+            <h3>Content Negotiation</h3>
+          </div>
+          <p>Serve format based on Accept header.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--pink); color: white;">SLIP-32</span>
+            <h3>Data Islands</h3>
+          </div>
+          <p>Embed RDF in HTML. Offline support.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--pink); color: white;">SLIP-33</span>
+            <h3>PATCH</h3>
+          </div>
+          <p>N3 Patch and SPARQL Update.</p>
+        </div>
+      </div>
+
+      <h3 style="color: var(--cyan); margin: 2rem 0 1rem;">Features</h3>
+      <div class="block-grid">
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-40</span>
+            <h3>Containers</h3>
+          </div>
+          <p>LDP containers with listings.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-41</span>
+            <h3>Pods</h3>
+          </div>
+          <p>User storage provisioning.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-42</span>
+            <h3>WebSockets</h3>
+          </div>
+          <p>Real-time update notifications.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-43</span>
+            <h3>Type Index</h3>
+          </div>
+          <p>Discover resources by type.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-44</span>
+            <h3>Mashlib/SolidOS</h3>
+          </div>
+          <p>Data browser integration.</p>
+        </div>
+      </div>
+      <h3 style="color: var(--text-muted); margin: 2rem 0 1rem;">Recipes: Combine SLIPs</h3>
+      <div class="block-grid">
+        <div class="block" style="border-color: var(--success);">
+          <div class="block-header">
+            <h3 style="color: var(--success);">Minimal Server</h3>
+          </div>
+          <p>SLIP-10 + SLIP-11 + SLIP-12 + SLIP-80</p>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">10 minutes to implement</p>
+        </div>
+
+        <div class="block" style="border-color: var(--warning);">
+          <div class="block-header">
+            <h3 style="color: var(--warning);">Single-User</h3>
+          </div>
+          <p>Minimal + SLIP-81 + SLIP-90</p>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Personal data store</p>
+        </div>
+
+        <div class="block" style="border-color: var(--accent);">
+          <div class="block-header">
+            <h3 style="color: var(--accent);">Nostr-Native</h3>
+          </div>
+          <p>Minimal + SLIP-21 + SLIP-82 + SLIP-91</p>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">No passwords, no registration</p>
+        </div>
+
+        <div class="block" style="border-color: var(--pink);">
+          <div class="block-header">
+            <h3 style="color: var(--pink);">Full JSS</h3>
+          </div>
+          <p>All SLIPs combined</p>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Complete Solid server</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main" id="spec">
+    <h2>1. Introduction</h2>
+    <p>
+      Solid Lite is a minimal protocol for building decentralized web applications based on
+      <a href="https://solid.mit.edu/">Social Linked Data</a> principles. It prioritizes
+      simplicity and composability—start with a basic server you can build in 10 minutes,
+      then add features via <a href="https://solid-lite.github.io/slips/">SLIPs</a> as needed.
+    </p>
+
+    <div class="quickstart">
+      <h3>Quick Start</h3>
+      <p>A minimal Solid Lite server needs:</p>
+      <ul>
+        <li>HTTP GET, PUT, DELETE on resources</li>
+        <li>CORS headers for browser access</li>
+        <li>JSON-LD content type support</li>
+      </ul>
+      <p>That's it. Add authentication, authorization, and other features via SLIPs.</p>
+    </div>
+
+    <h2>2. HTTP Protocol</h2>
+
+    <h3>2.1 Server Requirements</h3>
+    <ul>
+      <li>Servers MUST conform to HTTP/1.1 Message Syntax and Routing (<a href="https://tools.ietf.org/html/rfc7230">RFC7230</a>)</li>
+      <li>Servers MUST conform to HTTP/1.1 Conditional Requests (<a href="https://tools.ietf.org/html/rfc7232">RFC7232</a>)</li>
+      <li>Servers SHOULD support HTTP/1.1 Caching (<a href="https://tools.ietf.org/html/rfc7234">RFC7234</a>)</li>
+    </ul>
+
+    <h3>2.2 Client Requirements</h3>
+    <ul>
+      <li>Clients MUST conform to HTTP/1.1 Message Syntax and Routing</li>
+      <li>Clients MAY support Conditional Requests and Caching</li>
+    </ul>
+
+    <h2>3. Resources</h2>
+
+    <h3>3.1 URIs</h3>
+    <p>
+      Resources are identified by URIs conforming to <a href="https://tools.ietf.org/html/rfc3987">RFC3987</a>.
+      URIs provide consistent identification across the Solid Lite ecosystem.
+    </p>
+
+    <h3>3.2 CRUD Operations</h3>
+    <table>
+      <tr><th>Operation</th><th>Method</th><th>Success</th><th>Not Found</th></tr>
+      <tr><td>Create</td><td>PUT</td><td>201 Created</td><td>-</td></tr>
+      <tr><td>Read</td><td>GET, HEAD</td><td>200 OK</td><td>404</td></tr>
+      <tr><td>Update</td><td>PUT</td><td>200 / 204</td><td>404</td></tr>
+      <tr><td>Delete</td><td>DELETE</td><td>200 / 204</td><td>404</td></tr>
+    </table>
+    <p>Servers MUST support GET, HEAD, OPTIONS, PUT, and DELETE methods.</p>
+
+    <h2>4. CORS</h2>
+    <p>
+      Servers MUST include CORS headers to allow browser-based applications to access resources
+      across origins:
+    </p>
+    <pre><code>Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET, HEAD, OPTIONS, PUT, DELETE, POST
+Access-Control-Allow-Headers: Content-Type, Authorization</code></pre>
+
+    <h2>5. Identity</h2>
+    <p>Identity in Solid Lite can be established via:</p>
+    <ul>
+      <li><strong>WebID</strong> — A URI that returns machine-readable profile data (JSON-LD)</li>
+      <li><strong>did:nostr</strong> — A DID using a Nostr public key: <code>did:nostr:&lt;64-char-hex-pubkey&gt;</code></li>
+    </ul>
+    <p>
+      The profile SHOULD live at the root of storage for human-friendly URLs.
+      See <a href="https://nostrcg.github.io/did-nostr/">did:nostr spec</a> for details.
+    </p>
+
+    <h2>6. Authentication</h2>
+    <p>
+      Authentication verifies identity. Solid Lite defines a layered approach—choose the level
+      appropriate for your use case:
+    </p>
+
+    <h3>6.1 Null Auth (SLIP-80)</h3>
+    <p>
+      <strong>Testing only.</strong> Everyone can read and write. MUST NOT be used in production.
+    </p>
+
+    <h3>6.2 Bearer Auth (SLIP-81)</h3>
+    <p>
+      <strong>Single-user mode.</strong> A shared API key sent via header:
+    </p>
+    <pre><code>Authorization: Bearer &lt;SOLID_API_KEY&gt;</code></pre>
+    <p>Server returns 401 if key is missing or invalid.</p>
+
+    <h3>6.3 Schnorr Auth (SLIP-82)</h3>
+    <p>
+      <strong>Multi-user mode.</strong> Uses <a href="https://github.com/nostr-protocol/nips/blob/master/98.md">NIP-98</a>
+      HTTP authentication with Schnorr signatures:
+    </p>
+    <pre><code>Authorization: Nostr &lt;base64-encoded-signed-event&gt;</code></pre>
+    <p>
+      The signed event (kind 27235) contains the URL and HTTP method, verified against the
+      user's Nostr public key. No certificates or passwords required.
+    </p>
+
+    <h2>7. Authorization</h2>
+    <p>
+      The default authorization policy (<a href="https://solid-lite.github.io/slips/">SLIP-90</a>):
+    </p>
+    <ul>
+      <li><strong>Everyone can read</strong></li>
+      <li><strong>Only the owner can write</strong></li>
+    </ul>
+    <p>Access denial returns:</p>
+    <ul>
+      <li><code>401 Unauthorized</code> — Identity unknown</li>
+      <li><code>403 Forbidden</code> — Identity known but access denied</li>
+    </ul>
+
+    <h2>8. Data Format</h2>
+    <p>
+      Resources use <a href="https://json-ld.org/">JSON-LD 1.1</a> for structured, linked data.
+      Example profile:
+    </p>
+    <pre><code>{
+  "@context": [
+    "https://www.w3.org/ns/activitystreams",
+    "https://w3id.org/webid"
+  ],
+  "@id": "#me",
+  "type": "Person",
+  "name": "Alyssa P. Hacker",
+  "preferredUsername": "alyssa",
+  "summary": "Lisp enthusiast",
+  "storage": "/",
+  "nostr": "did:nostr:abcd0123..."
+}</code></pre>
+
+    <h2>9. Extending Solid Lite</h2>
+    <p>
+      Solid Lite is extended via <a href="https://solid-lite.github.io/slips/">SLIPs</a>
+      (Solid Lite Implementation Proposals). Each SLIP adds a composable feature:
+    </p>
+    <ul>
+      <li><strong>SLIP 1-999</strong> — Core protocol extensions</li>
+      <li><strong>SLIP 1000-9999</strong> — Related projects</li>
+      <li><strong>SLIP 10000+</strong> — Community extensions</li>
+    </ul>
+    <p>
+      Combine SLIPs to build the server you need—from a minimal 10-minute implementation
+      to a full-featured system like <a href="https://github.com/JavaScriptSolidServer/JavaScriptSolidServer">JSS</a>.
+    </p>
+  </main>
+
+  <footer class="footer">
+    <p>
+      <a href="https://github.com/solid-lite/draft-spec">Edit on GitHub</a> ·
+      <a href="https://solid-lite.github.io/slips/">SLIPs</a> ·
+      <a href="https://github.com/solid-lite">Organization</a>
+    </p>
+    <p style="margin-top: 0.5rem;">
+      Built on <a href="https://solidproject.org/">Solid</a> principles
+    </p>
+  </footer>
+</body>
+</html>
