@@ -321,21 +321,25 @@
           <strong style="color: var(--success);">Minimal</strong><br>
           <span style="font-size: 0.85rem; color: var(--text-muted);">4 SLIPs → 10 min</span>
         </div>
-        <div style="background: var(--bg); padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid var(--border);">
-          <strong style="color: var(--accent);">Nostr-Native</strong><br>
-          <span style="font-size: 0.85rem; color: var(--text-muted);">+ did:nostr + Schnorr</span>
-        </div>
         <div style="background: var(--bg); padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid var(--purple);">
           <strong style="color: var(--purple);">LWS</strong><br>
-          <span style="font-size: 0.85rem; color: var(--text-muted);"><a href="https://linkedwebstorage.com/">W3C REC</a> profile</span>
+          <span style="font-size: 0.85rem; color: var(--text-muted);"><a href="https://linkedwebstorage.com/">W3C target</a></span>
+        </div>
+        <div style="background: var(--bg); padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid var(--cyan);">
+          <strong style="color: var(--cyan);">ActivityPub</strong><br>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Fediverse</span>
         </div>
         <div style="background: var(--bg); padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid var(--border);">
           <strong style="color: var(--pink);">JSS</strong><br>
           <span style="font-size: 0.85rem; color: var(--text-muted);">All SLIPs</span>
         </div>
+        <div style="background: var(--bg); padding: 0.75rem 1.25rem; border-radius: 8px; border: 1px solid var(--border);">
+          <strong style="color: var(--accent);">Nostr-Native</strong><br>
+          <span style="font-size: 0.85rem; color: var(--text-muted);">Passwordless</span>
+        </div>
       </div>
       <p style="font-size: 0.9rem; color: var(--text-muted);">
-        <a href="https://linkedwebstorage.com/">Linked Web Storage</a> (W3C Working Group, REC 2026)
+        <a href="https://linkedwebstorage.com/">Linked Web Storage</a> (W3C Working Group, targeting REC in 2026)
         is one combination of SLIPs. Pick the SLIPs you need for your use case.
       </p>
     </div>
@@ -505,11 +509,46 @@
         </div>
       </div>
 
-      <h3 style="color: var(--cyan); margin: 2rem 0 1rem;">Features</h3>
+      <h3 style="color: var(--cyan); margin: 2rem 0 1rem;">Federation</h3>
       <div class="block-grid">
         <div class="block">
           <div class="block-header">
-            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-40</span>
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-50</span>
+            <h3>ActivityPub</h3>
+          </div>
+          <p>Inbox/Outbox federation with Fediverse.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-51</span>
+            <h3>WebFinger</h3>
+          </div>
+          <p>User discovery via /.well-known/webfinger.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-52</span>
+            <h3>HTTP Signatures</h3>
+          </div>
+          <p>Server-to-server authentication.</p>
+        </div>
+
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-53</span>
+            <h3>Nostr Relays</h3>
+          </div>
+          <p>Event publishing to Nostr network.</p>
+        </div>
+      </div>
+
+      <h3 style="color: #56d364; margin: 2rem 0 1rem;">Features</h3>
+      <div class="block-grid">
+        <div class="block">
+          <div class="block-header">
+            <span class="block-id" style="background: #56d364; color: white;">SLIP-40</span>
             <h3>Containers</h3>
           </div>
           <p>LDP containers with listings.</p>
@@ -517,7 +556,7 @@
 
         <div class="block">
           <div class="block-header">
-            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-41</span>
+            <span class="block-id" style="background: #56d364; color: white;">SLIP-41</span>
             <h3>Pods</h3>
           </div>
           <p>User storage provisioning.</p>
@@ -525,7 +564,7 @@
 
         <div class="block">
           <div class="block-header">
-            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-42</span>
+            <span class="block-id" style="background: #56d364; color: white;">SLIP-42</span>
             <h3>WebSockets</h3>
           </div>
           <p>Real-time update notifications.</p>
@@ -533,7 +572,7 @@
 
         <div class="block">
           <div class="block-header">
-            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-43</span>
+            <span class="block-id" style="background: #56d364; color: white;">SLIP-43</span>
             <h3>Type Index</h3>
           </div>
           <p>Discover resources by type.</p>
@@ -541,7 +580,7 @@
 
         <div class="block">
           <div class="block-header">
-            <span class="block-id" style="background: var(--cyan); color: white;">SLIP-44</span>
+            <span class="block-id" style="background: #56d364; color: white;">SLIP-44</span>
             <h3>Mashlib/SolidOS</h3>
           </div>
           <p>Data browser integration.</p>
@@ -565,20 +604,20 @@
           <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Personal data store</p>
         </div>
 
-        <div class="block" style="border-color: var(--accent);">
-          <div class="block-header">
-            <h3 style="color: var(--accent);">Nostr-Native</h3>
-          </div>
-          <p>Minimal + SLIP-21 + SLIP-82 + SLIP-91</p>
-          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">No passwords, no registration</p>
-        </div>
-
         <div class="block" style="border-color: var(--purple);">
           <div class="block-header">
             <h3 style="color: var(--purple);">LWS Profile</h3>
           </div>
           <p>Core + SLIP-20 + SLIP-83 + SLIP-91 + SLIP-40</p>
-          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;"><a href="https://linkedwebstorage.com/">W3C REC track</a></p>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;"><a href="https://linkedwebstorage.com/">W3C target</a></p>
+        </div>
+
+        <div class="block" style="border-color: var(--cyan);">
+          <div class="block-header">
+            <h3 style="color: var(--cyan);">ActivityPub</h3>
+          </div>
+          <p>Minimal + SLIP-50 + SLIP-51 + SLIP-52</p>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;"><a href="https://socialdocs.org/docs/ecosystem/fedbox/">Fediverse</a></p>
         </div>
 
         <div class="block" style="border-color: var(--pink);">
@@ -588,6 +627,14 @@
           <p>All SLIPs combined</p>
           <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Complete Solid server</p>
         </div>
+
+        <div class="block" style="border-color: var(--accent);">
+          <div class="block-header">
+            <h3 style="color: var(--accent);">Nostr-Native</h3>
+          </div>
+          <p>Minimal + SLIP-21 + SLIP-82 + SLIP-91</p>
+          <p style="color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem;">Passwordless, no registration</p>
+        </div>
       </div>
     </div>
   </section>
@@ -596,7 +643,7 @@
     <h2>1. Introduction</h2>
     <p>
       Solid Lite is a minimal protocol for building decentralized web applications based on
-      <a href="https://solid.mit.edu/">Social Linked Data</a> principles. It prioritizes
+      <a href="https://web.archive.org/web/20231001000000*/solid.mit.edu">Social Linked Data</a> principles. It prioritizes
       simplicity and composability—start with a basic server you can build in 10 minutes,
       then add features via <a href="https://solid-lite.github.io/slips/">SLIPs</a> as needed.
     </p>
