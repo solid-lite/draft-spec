@@ -156,6 +156,18 @@
       padding: 1.25rem;
     }
 
+    a.block {
+      display: block;
+      color: inherit;
+      text-decoration: none;
+      transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+    }
+    a.block:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
     .block-header {
       display: flex;
       align-items: center;
@@ -352,239 +364,239 @@
 
       <h3 style="color: var(--success); margin: 2rem 0 1rem;">Core Foundation (10-minute server)</h3>
       <div class="block-grid">
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/10.md">
           <div class="block-header">
             <span class="block-id core">SLIP-10</span>
             <h3>HTTP Methods</h3>
           </div>
           <p>GET, HEAD, OPTIONS, PUT, DELETE on resources.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/11.md">
           <div class="block-header">
             <span class="block-id core">SLIP-11</span>
             <h3>CORS Headers</h3>
           </div>
           <p>Cross-origin access for browser apps.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/12.md">
           <div class="block-header">
             <span class="block-id core">SLIP-12</span>
             <h3>JSON-LD</h3>
           </div>
           <p>Linked data format. application/ld+json.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/13.md">
           <div class="block-header">
             <span class="block-id core">SLIP-13</span>
             <h3>URI Resources</h3>
           </div>
           <p>Every resource has a stable URI.</p>
-        </div>
+        </a>
       </div>
 
       <h3 style="color: var(--warning); margin: 2rem 0 1rem;">Authentication</h3>
       <div class="block-grid">
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/80.md">
           <div class="block-header">
             <span class="block-id auth">SLIP-80</span>
             <h3>Null Auth</h3>
           </div>
           <p>Testing only. No authentication.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/81.md">
           <div class="block-header">
             <span class="block-id auth">SLIP-81</span>
             <h3>Bearer Token</h3>
           </div>
           <p>API key for single-user servers.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/82.md">
           <div class="block-header">
             <span class="block-id auth">SLIP-82</span>
             <h3>Schnorr/NIP-98</h3>
           </div>
           <p>Nostr signatures. No passwords.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/83.md">
           <div class="block-header">
             <span class="block-id auth">SLIP-83</span>
             <h3>Solid-OIDC</h3>
           </div>
           <p>OpenID Connect with DPoP tokens.</p>
-        </div>
+        </a>
       </div>
 
       <h3 style="color: var(--accent); margin: 2rem 0 1rem;">Identity</h3>
       <div class="block-grid">
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/20.md">
           <div class="block-header">
             <span class="block-id">SLIP-20</span>
             <h3>WebID Profile</h3>
           </div>
           <p>URI-based identity with RDF profile.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/21.md">
           <div class="block-header">
             <span class="block-id">SLIP-21</span>
             <h3>did:nostr</h3>
           </div>
           <p>Identity from Nostr pubkey. No registration.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/22.md">
           <div class="block-header">
             <span class="block-id">SLIP-22</span>
             <h3>Identity Linking</h3>
           </div>
           <p>Link WebID ↔ did:nostr via owl:sameAs.</p>
-        </div>
+        </a>
       </div>
 
       <h3 style="color: var(--purple); margin: 2rem 0 1rem;">Authorization</h3>
       <div class="block-grid">
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/90.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--purple); color: white;">SLIP-90</span>
             <h3>Owner Write</h3>
           </div>
           <p>Everyone reads, owner writes. Simple default.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/91.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--purple); color: white;">SLIP-91</span>
             <h3>WAC</h3>
           </div>
           <p>Web Access Control. Fine-grained ACLs.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/92.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--purple); color: white;">SLIP-92</span>
             <h3>ACP</h3>
           </div>
           <p>Access Control Policy. Policy-based.</p>
-        </div>
+        </a>
       </div>
 
       <h3 style="color: var(--pink); margin: 2rem 0 1rem;">Data & Formats</h3>
       <div class="block-grid">
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/30.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--pink); color: white;">SLIP-30</span>
             <h3>Turtle</h3>
           </div>
           <p>text/turtle RDF format support.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/31.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--pink); color: white;">SLIP-31</span>
             <h3>Content Negotiation</h3>
           </div>
           <p>Serve format based on Accept header.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/32.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--pink); color: white;">SLIP-32</span>
             <h3>Data Islands</h3>
           </div>
           <p>Embed RDF in HTML. Offline support.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/33.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--pink); color: white;">SLIP-33</span>
             <h3>PATCH</h3>
           </div>
           <p>N3 Patch and SPARQL Update.</p>
-        </div>
+        </a>
       </div>
 
       <h3 style="color: var(--cyan); margin: 2rem 0 1rem;">Federation</h3>
       <div class="block-grid">
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/50.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--cyan); color: white;">SLIP-50</span>
             <h3>ActivityPub</h3>
           </div>
           <p>Inbox/Outbox federation with Fediverse.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/51.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--cyan); color: white;">SLIP-51</span>
             <h3>WebFinger</h3>
           </div>
           <p>User discovery via /.well-known/webfinger.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/52.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--cyan); color: white;">SLIP-52</span>
             <h3>HTTP Signatures</h3>
           </div>
           <p>Server-to-server authentication.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/53.md">
           <div class="block-header">
             <span class="block-id" style="background: var(--cyan); color: white;">SLIP-53</span>
             <h3>Nostr Relays</h3>
           </div>
           <p>Event publishing to Nostr network.</p>
-        </div>
+        </a>
       </div>
 
       <h3 style="color: #56d364; margin: 2rem 0 1rem;">Features</h3>
       <div class="block-grid">
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/40.md">
           <div class="block-header">
             <span class="block-id" style="background: #56d364; color: white;">SLIP-40</span>
             <h3>Containers</h3>
           </div>
           <p>LDP containers with listings.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/41.md">
           <div class="block-header">
             <span class="block-id" style="background: #56d364; color: white;">SLIP-41</span>
             <h3>Pods</h3>
           </div>
           <p>User storage provisioning.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/42.md">
           <div class="block-header">
             <span class="block-id" style="background: #56d364; color: white;">SLIP-42</span>
             <h3>WebSockets</h3>
           </div>
           <p>Real-time update notifications.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/43.md">
           <div class="block-header">
             <span class="block-id" style="background: #56d364; color: white;">SLIP-43</span>
             <h3>Type Index</h3>
           </div>
           <p>Discover resources by type.</p>
-        </div>
+        </a>
 
-        <div class="block">
+        <a class="block" href="https://github.com/solid-lite/slips/blob/gh-pages/44.md">
           <div class="block-header">
             <span class="block-id" style="background: #56d364; color: white;">SLIP-44</span>
             <h3>Mashlib/SolidOS</h3>
           </div>
           <p>Data browser integration.</p>
-        </div>
+        </a>
       </div>
       <h3 style="color: var(--text-muted); margin: 2rem 0 1rem;">Recipes: Combine SLIPs</h3>
       <div class="block-grid">
